@@ -1,0 +1,155 @@
+/** * THEME LIGHT */
+/* tabs colors */
+.add-tab-button-container {
+    display: flex;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: transparent;
+  }
+  
+  .add-tab-button {
+    background-color: transparent;
+    color: rgb(88, 92, 95);
+    border: none;
+    font-size: 24px;
+    height: 100%;
+    width: 2.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: -8px 0px 0 -7px rgba(0, 0, 0, 0);
+  }
+  
+  .add-tab-button:hover {
+    background-color: #4c4c4c33;
+    color: rgb(88, 92, 95);
+  }
+  
+  .tab-container {
+    display: contents;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .tabs-scroll-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden; /* Ensure no vertical scroll */
+    white-space: nowrap;
+    flex-grow: 1;
+  }
+  
+  .tabs-scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .tabs-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .tabs-scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .tabs-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  button.mat-button {
+    display: flex;
+    align-items: center;
+    border-radius: 0; /* Ensure border radius is 0 */
+  }
+  
+  button.mat-button:hover {
+    background-color: #F0F0F0;
+  }
+  
+  .focused-tab {
+    background-color: #005CBB;
+    color: white !important;
+  }
+  
+  mat-icon {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  
+  .spacer {
+    flex-grow: 1;
+  }
+  
+  .mat-mdc-button > .mat-icon {
+    margin-right: var(--mat-text-button-icon-spacing, 4px) !important;
+    margin-left: var(--mat-text-button-icon-offset, 4px) !important;
+  }
+  
+  .close-icon:hover {
+    color: #005CBB;
+    background-color: white !important;
+    border-radius: 20%; /* Optional: make the background color rounded */
+  }
+  
+  .close-icon {
+    width: 20px;
+    height: 20px;
+    padding-right: 1px;
+    float: right;
+  }
+  
+  .mat-mdc-button:not(:disabled) {
+    display: inline-block;
+  }
+  
+  .tab-input {
+    width: 75px;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 8px;
+  }
+  
+  .gris-background {
+    background-color: #ffffff;
+  }
+
+  ::ng-deep .tab-container button{
+    background-color: white !important;
+    color: #005CBB !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 2.2rem !important;
+    width: auto !important;
+    padding-left: 12px;
+    padding-right: 17px;
+}
+
+::ng-deep .tab-container button:hover{
+    background-color: #d5eafe !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .tab-container button.focused-tab{
+    background-color: #005CBB !important;
+    color: white !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .close-button{
+    width: 10px !important;
+    height: 10px !important;
+}
+
+::ng-deep .dev-tools-toggle{
+  float: right !important;
+}

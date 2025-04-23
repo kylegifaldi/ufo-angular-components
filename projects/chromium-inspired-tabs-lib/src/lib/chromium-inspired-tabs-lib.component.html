@@ -1,0 +1,23 @@
+<section class="gris-background">
+    <div class="tab-container">
+      <ng-container *ngFor="let tab of tabs">
+        <button mat-button
+        color="accent"
+        type="button"
+        [@slideIn]
+        [ngClass]="{'focused-tab': tab.id === focusedTabId}"
+        (click)="focusTab(tab.id)">
+        <mat-icon *ngIf="tab.hasIcon">{{tab.matIcon}}</mat-icon>
+        <ng-container>
+          <span>{{ tab.title }}</span>
+        </ng-container>
+          <mat-icon class="close-icon" *ngIf="!tab.hasIcon" (click)="closeTab(tab.id)">close</mat-icon>
+        </button>
+      </ng-container>
+      <button mat-button color="accent" type="button" (click)="addTab()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button *ngIf="devToolsEnabled" class="dev-tools-toggle" (click)="toggleDevTools()"><mat-icon>developer_mode</mat-icon></button>
+    </div>
+  </section>
+  

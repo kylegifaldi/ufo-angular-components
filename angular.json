@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "chromium-inspired-tabs-lib": {
+      "projectType": "library",
+      "root": "projects/chromium-inspired-tabs-lib",
+      "sourceRoot": "projects/chromium-inspired-tabs-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/chromium-inspired-tabs-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/chromium-inspired-tabs-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/chromium-inspired-tabs-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/chromium-inspired-tabs-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
