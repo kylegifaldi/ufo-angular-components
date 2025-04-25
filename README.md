@@ -282,9 +282,9 @@ export class YourAdvancedComponent {
 
 You can associate a component with a tab and use it to dynamically load content:
 
-TypeScript
 
-```
+
+```TypeScript
 import { Component, Input, NgFor, NgIf, NgComponentOutlet } from '@angular/common';
 import { Tab } from './path-to-your-tab-interface'; // Adjust path as needed
 
@@ -311,9 +311,9 @@ export class TabContentComponent {
 
 The library provides default styling that matches Chromium's tab design, but you can customize it by overriding CSS variables:
 
-CSS
 
-```
+
+```CSS
 :root {
   --chrome-tabs-background: #f0f0f0;
   --chrome-tab-background: #fff;
@@ -331,29 +331,30 @@ This component uses Material Icons. Make sure to include the Material Icons font
 
 ### Install Angular Material:
 
-Bash
 
-```
+
+```Bash
 ng add @angular/material
 
 ```
 
 ### Include Material Icons in your `index.html`:
 
-HTML
 
-```
+
+```HTML
 <link href="[https://fonts.googleapis.com/icon?family=Material+Icons](https://fonts.googleapis.com/icon?family=Material+Icons)" rel="stylesheet">
 
 ```
 
 Or include in your global styles file (e.g., `styles.css`):
 
-CSS
 
-```
+```CSS
 @import url('[https://fonts.googleapis.com/icon?family=Material+Icons](https://fonts.goog
-```# Compatibility
+```
+
+# Compatibility
 - Angular 16+
 - Compatible with standalone components and NgModules
 - Works with Angular Material 16+
