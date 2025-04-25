@@ -95,8 +95,11 @@
   .close-icon {
     width: 20px;
     height: 20px;
-    padding-right: 1px;
+    padding-right: 0px;
+    padding-bottom: 0px;
     float: right;
+    margin-top: -1px;
+    font-size: 20px;
   }
   
   .mat-mdc-button:not(:disabled) {
@@ -120,15 +123,18 @@
   }
 
   ::ng-deep .tab-container button{
-    background-color: white !important;
-    color: #005CBB !important;
+    background-color: #fff !important;
+    color: #005cbb !important;
     border-radius: 0 !important;
     border: none !important;
     box-shadow: none !important;
-    height: 46px !important;
+    height: 45px !important;
     width: auto !important;
     padding-left: 12px;
     padding-right: 17px;
+    font-weight: bold;
+    font-family: Roboto;
+    font-size: 14px;
 }
 
 ::ng-deep .tab-container button:hover{
