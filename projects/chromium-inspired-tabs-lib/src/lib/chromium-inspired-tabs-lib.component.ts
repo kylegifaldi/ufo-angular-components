@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { filter, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, filter, Observable, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { ChromiumInspiredTabsLibService } from './chromium-inspired-tabs-lib.service';
 
-interface Tab {
+export interface Tab {
   id: number;
   title: string;
   hasIcon: boolean;
@@ -72,12 +73,10 @@ interface Tab {
 export class ChromiumInspiredTabsLibComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription = new Subscription();
-  public tabs: Tab[] = [];
-  public focusedTabId: number | null = null;
-  public nextTabId: number = 0;
+  protected tabs: Tab[] = [];
 
   @Input()
-  public tabs$: Observable<Tab[]> = new Observable<Tab[]>();
+  public tabsSubject: BehaviorSubject<Tab[]> = new BehaviorSubject<Tab[]>([]);
 
   @Input()
   public devToolsEnabled: boolean = true;
@@ -94,57 +93,44 @@ export class ChromiumInspiredTabsLibComponent implements OnInit, OnDestroy {
   @Output()
   public devToolsButtonClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {
-  }
+  constructor(private chromiumTabsService: ChromiumInspiredTabsLibService) {}
+
   
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.chromiumTabsService.tabsSubject = this.tabsSubject;
+    this.subscriptions.add(this.chromiumTabsService.tabsSubject.subscribe(tabs => {
+      this.tabs = tabs;
+    }));
+  }
 
   ngAfterViewInit(): void {
-    this.subscriptions.add(
-      this.tabs$.subscribe(tabs => {
-        this.tabs = tabs;
-        this.nextTabId = tabs.length > 0 ? Math.max(...tabs.map(tab => tab.id)) + 1 : 0;
-      })
-    );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  addTab(): void {
-    this.nextTabId++;
-    const newTab: Tab = {
-      id: this.nextTabId,
-      title: `New tab id ${this.nextTabId}`,
-      hasIcon: false
-    };
-    this.addTabButtonClick.emit(newTab);
-    this.tabs.push(newTab);
-    this.focusedTabId = newTab.id;
-    this.focusTab(newTab.id);
+  protected addTab(): void {
+    const newTabId = this.chromiumTabsService.addTab(`New tab id ${this.chromiumTabsService.getNextTabId()}`, false);
   }
 
   closeTab(tabId: number): void {
+    this.chromiumTabsService.closeTab(tabId);
     this.tabClose.emit(tabId);
-    this.tabs = this.tabs.filter(tab => tab.id !== tabId);
-    if(this.focusedTabId == tabId){
-      this.focusedTabId = 0;
-      this.focusTab(0);
-    }
   }
 
   focusTab(tabId: number): void {
+    this.chromiumTabsService.focusTab(tabId);
     this.tabFocus.emit(tabId);
-    this.focusedTabId = tabId;
-  }
-
-  goHome() {
-    this.focusTab(0);
   }
 
   toggleDevTools() {
+    // open dev tools here
     this.devToolsButtonClick.emit(true);
+  }
+
+  get focusedTabId(): number {
+    return this.chromiumTabsService.getFocusedTabId();
   }
 
 }

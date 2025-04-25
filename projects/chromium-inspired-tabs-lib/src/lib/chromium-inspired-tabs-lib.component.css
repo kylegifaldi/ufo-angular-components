@@ -116,6 +116,7 @@
   
   .gris-background {
     background-color: #ffffff;
+    display: inline-flex !important;
   }
 
   ::ng-deep .tab-container button{
@@ -124,7 +125,7 @@
     border-radius: 0 !important;
     border: none !important;
     box-shadow: none !important;
-    height: 2.2rem !important;
+    height: 46px !important;
     width: auto !important;
     padding-left: 12px;
     padding-right: 17px;
