@@ -6,7 +6,9 @@ A modern, flexible tab component for Angular applications inspired by Chromium's
 
 ## Live Demo
 
-(Link to Live Demo would go here)
+![Tabs Example](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczZ0aHN3d2w0ZXk2bmVuMHFoYWU5dDg0bjgzenUyZ2g4cDNmeGNyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Liv37EI0AEL0Xyu9QD/giphy.gif)
+
+[Interactive Demo!](https://kylegifaldi.github.io/ufo-angular-components/)
 
 ## Installation
 
